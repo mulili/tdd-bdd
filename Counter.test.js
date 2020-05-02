@@ -42,7 +42,7 @@ describe('test Counter class', () => {
     afterEach(() => {
       console.log('after each  add method');
     });
-    test('test addOne', () => {
+    test.only('test addOne', () => {
       console.log('test addOne');
       counter.addOne();
       expect(counter.number).toEqual(1);
