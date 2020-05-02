@@ -30,7 +30,7 @@ describe('Mock', () => {
       expect(fn).toHaveBeenCalledWith(23);
     });
 
-    test.only('mockImplementation', () => {
+    test('mockImplementation', () => {
       fn.mockImplementationOnce(() => {
         console.log('mockImplementationOnce');
         return 123;
@@ -38,12 +38,9 @@ describe('Mock', () => {
       runCallBack(fn);
       expect(fn.mock.results[0].value).toEqual(123);
 
-      fn.mockImplementationOnce(() => {
-        console.log('mockImplementationOnce');
-        return 4;
-      });
+      fn.mockReturnThis();
       runCallBack(fn);
-      expect(fn.mock.results[1].value).toEqual(4);
+      expect(fn.mock.results[1].value).toBeUndefined();
     });
   });
   describe('Mock api', () => {
