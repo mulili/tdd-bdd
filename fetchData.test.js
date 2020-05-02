@@ -49,7 +49,7 @@ describe('test promise', () => {
     return expect(fetch()).resolves.toMatchObject({ data: result });
   });
 
-  test('use rejects to test promise', () => {
+  test.skip('use rejects to test promise', () => {
     return expect(fetch()).rejects.toThrowError();
   });
 
@@ -60,7 +60,7 @@ describe('test promise', () => {
     await expect(fetch()).resolves.toMatchObject({ data: result });
   });
 
-  test('use rejects to test promise', async () => {
+  test.skip('use rejects to test promise', async () => {
     await expect(fetch()).rejects.toThrowError();
   });
 
@@ -69,7 +69,7 @@ describe('test promise', () => {
     expect(response.data).toEqual(result);
   });
 
-  test('use async,await to test fail', async () => {
+  test.skip('use async,await to test fail', async () => {
     expect.assertions(1);
     try {
       await fetch();
