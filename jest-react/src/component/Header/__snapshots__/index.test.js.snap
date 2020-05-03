@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component test dom test snapshot test 1`] = `
+<div
+  className="header"
+>
+  <span>
+    TodoList
+  </span>
+  <input
+    className="header-input"
+    data-test="inputItem"
+    onChange={[Function]}
+    onKeyUp={[Function]}
+    placeholder="addTodo"
+    type="text"
+    value=""
+  />
+</div>
+`;

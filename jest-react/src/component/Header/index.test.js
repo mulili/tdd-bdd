@@ -16,6 +16,9 @@ describe('Header component test', () => {
   });
 
   describe('dom test', () => {
+    test('snapshot test', () => {
+      expect(wrapper).toMatchSnapshot();
+    });
     test('should have one input ', () => {
       expect(inputItem.length).toEqual(1);
     });
