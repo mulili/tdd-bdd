@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test generateAnotherConfig test 1`] = `
+Object {
+  "hash": "#hash",
+  "port": ":443",
+  "query": "a=1&b=2",
+  "url": "https://www.google.com",
+}
+`;
+
+exports[`Snapshot test generateConfig test 1`] = `
+Object {
+  "hash": "#hash",
+  "port": ":80",
+  "query": "a=1&b=2",
+  "time": Any<Date>,
+  "url": "https://www.google.com",
+}
+`;
