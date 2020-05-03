@@ -56,14 +56,21 @@ describe('Header component test', () => {
       expect(fn).toHaveBeenCalledTimes(0);
     });
 
-    test('如果input有内容，应该被调用', () => {
-      wrapper.setState({ value: userInput });
+    test('如果input有内容，应该被以输入值调用，且调用之后，input对应的state置为“”', () => {
+      wrapper.setState({
+        value: userInput,
+      });
       inputItem.simulate('keyUp', {
         keyCode: 13,
       });
-      console.log(wrapper.state('value'));
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(userInput);
+      console.log(inputItem.debug());
+      expect(wrapper.state('value')).toEqual('');
+
+      // dom 变化之后，需要重新获取dom，才能获得相应的变动
+      // const newInputItem = wrapper.find("[data-test='inputItem']");
+      // expect(newInputItem.prop('value')).toEqual('');
     });
   });
 });
