@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import './index.css';
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -28,11 +28,14 @@ class Header extends Component {
   render() {
     const { value } = this.state;
     return (
-      <div>
+      <div className="header">
+        <span>TodoList</span>
         <input
+          className="header-input"
           type="text"
           data-test="inputItem"
           value={value}
+          placeholder="addTodo"
           onChange={this.handleChange}
           onKeyUp={this.handleKeyUp}
         />
