@@ -29,16 +29,18 @@ class Header extends Component {
     const { value } = this.state;
     return (
       <div className="header">
-        <span>TodoList</span>
-        <input
-          className="header-input"
-          type="text"
-          data-test="inputItem"
-          value={value}
-          placeholder="addTodo"
-          onChange={this.handleChange}
-          onKeyUp={this.handleKeyUp}
-        />
+        <div className="header-container">
+          <span>TodoList</span>
+          <input
+            className="header-input"
+            type="text"
+            data-test="inputItem"
+            value={value}
+            placeholder="addTodo"
+            onChange={this.handleChange}
+            onKeyUp={this.handleKeyUp}
+          />
+        </div>
       </div>
     );
   }
