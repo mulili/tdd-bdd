@@ -23,12 +23,17 @@ class Todo extends Component {
     });
   };
 
+  changeFocus = index => {};
   render() {
     const { todoList } = this.state;
     return (
       <div>
         <Header addUndoItem={this.addUndoItem} />
-        <UndoList undoList={todoList} deleteItem={this.deleteItem} />
+        <UndoList
+          undoList={todoList}
+          deleteItem={this.deleteItem}
+          changeFocus={this.changeFocus}
+        />
       </div>
     );
   }

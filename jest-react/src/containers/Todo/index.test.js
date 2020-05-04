@@ -26,10 +26,13 @@ describe('Todo component test', () => {
       );
     });
 
-    test('<UndoList/> undoList 属性和 deleteItem 方法，且这个方法是<TodoList/>的实例 ', () => {
+    test('<UndoList/> undoList 属性， deleteItem 方法，changeFocus 方法，且这两个方法都是<TodoList/>的对应实例 ', () => {
       expect(undoList.prop('undoList')).toEqual(wrapper.state('todoList'));
       expect(undoList.prop('deleteItem')).toEqual(
         wrapper.instance().deleteItem
+      );
+      expect(undoList.prop('changeFocus')).toEqual(
+        wrapper.instance().changeFocus
       );
     });
   });
