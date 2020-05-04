@@ -43,6 +43,18 @@ class Todo extends Component {
     });
   };
 
+  handleModifiedItem = (index, value) => {
+    const { todoList } = this.state;
+    this.setState({
+      todoList: todoList.map((item, k) => {
+        if (k === index) {
+          item.value = value;
+        }
+        return item;
+      }),
+    });
+  };
+
   render() {
     const { todoList } = this.state;
     return (
@@ -53,6 +65,7 @@ class Todo extends Component {
           deleteItem={this.deleteItem}
           handleFocus={this.handleFocus}
           handleBlur={this.handleBlur}
+          handleModifiedItem={this.handleModifiedItem}
         />
       </div>
     );
