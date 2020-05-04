@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import './index.css';
 class UndoList extends Component {
-  handleDelete = index => {
-    const { deleteItem } = this.props;
-    deleteItem(index);
-  };
   render() {
-    const { undoList } = this.props;
+    const { undoList, deleteItem, changeFocus } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-container">
@@ -19,16 +15,19 @@ class UndoList extends Component {
           <ul className="undo-list-content">
             {undoList.map((item, index) => (
               <li
-                key={`${index}${item}`}
+                key={`${index}-${item}`}
                 className="undo-list-item"
                 data-test="undoList"
+                onClick={() => {
+                  changeFocus(index);
+                }}
               >
                 {item}
                 <div
                   className="delete-item"
                   data-test="deleteItem"
                   onClick={() => {
-                    this.handleDelete(index);
+                    deleteItem(index);
                   }}
                 >
                   -

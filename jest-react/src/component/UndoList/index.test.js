@@ -23,7 +23,7 @@ describe('UndoList component test', () => {
       expect(undoList.length).toEqual(3);
     });
   });
-  
+
   describe('delete function test', () => {
     test('should have corresponding delete button when list exist', () => {
       const mockUndoList = ['hello', 'hello', 'hello'];
@@ -43,6 +43,21 @@ describe('UndoList component test', () => {
       deleteItems.at(index).simulate('click');
       expect(mockDeleteItemFn).toHaveBeenCalledWith(index);
       expect(mockDeleteItemFn).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('click listItem test', () => {
+    test('changeFocus fn should be called after click listItem', () => {
+      const mockUndoList = ['hello', 'hello', 'hello'];
+      const mockChangeFocus = jest.fn();
+      const wrapper = shallow(
+        <UndoList undoList={mockUndoList} changeFocus={mockChangeFocus} />
+      );
+      const listItems = findNodeByDataTest(wrapper, 'undoList');
+      const index = 1;
+      listItems.at(index).simulate('click');
+       expect(mockChangeFocus).toHaveBeenCalledWith(index);
+       expect(mockChangeFocus).toHaveBeenCalledTimes(1);
     });
   });
 });
