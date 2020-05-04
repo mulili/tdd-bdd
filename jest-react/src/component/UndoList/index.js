@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './index.css';
 class UndoList extends Component {
+  handleInputItemChange = (e, index) => {
+    const { value } = e.target;
+    const { handleModifiedItem } = this.props;
+    handleModifiedItem(index, value);
+  };
+
   render() {
     const { undoList, deleteItem, handleFocus, handleBlur } = this.props;
     return (
@@ -26,7 +32,11 @@ class UndoList extends Component {
                 }}
               >
                 {item.isFocus ? (
-                  <input data-test="inputItem" value={item.value}></input>
+                  <input
+                    data-test="inputItem"
+                    value={item.value}
+                    onChange={e => this.handleInputItemChange(e, index)}
+                  ></input>
                 ) : (
                   item.value
                 )}

@@ -103,4 +103,29 @@ describe('UndoList component test', () => {
       expect(mockHandleBlur).toHaveBeenCalledTimes(1);
     });
   });
+
+  describe('inputItem change test', () => {
+    test('modifyItem method should be called with value', () => {
+      const mockUndoList = [
+        { isFocus: true, value: 'hello' },
+        { isFocus: false, value: 'hey' },
+      ];
+      const mockHandleModifyItem = jest.fn();
+      const wrapper = shallow(
+        <UndoList
+          undoList={mockUndoList}
+          handleModifiedItem={mockHandleModifyItem}
+        />
+      );
+      const inputItems = findNodeByDataTest(wrapper, 'inputItem');
+      const inputValue = 'hello,world';
+      inputItems.at(0).simulate('change', {
+        target: {
+          value: inputValue,
+        },
+      });
+      expect(mockHandleModifyItem).toHaveBeenCalledTimes(1);
+      expect(mockHandleModifyItem).toHaveBeenCalledWith(0, inputValue);
+    });
+  });
 });
