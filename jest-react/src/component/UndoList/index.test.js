@@ -23,6 +23,7 @@ describe('UndoList component test', () => {
       expect(undoList.length).toEqual(3);
     });
   });
+  
   describe('delete function test', () => {
     test('should have corresponding delete button when list exist', () => {
       const mockUndoList = ['hello', 'hello', 'hello'];
@@ -30,6 +31,7 @@ describe('UndoList component test', () => {
       const deleteItems = findNodeByDataTest(wrapper, 'deleteItem');
       expect(deleteItems.length).toEqual(3);
     });
+
     test('delete function should be called after click delete btn', () => {
       const mockUndoList = ['hello', 'hello', 'hello'];
       const mockDeleteItemFn = jest.fn();

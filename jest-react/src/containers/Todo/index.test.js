@@ -39,14 +39,14 @@ describe('Todo component test', () => {
       expect(wrapper.state('todoList').length).toEqual(0);
     });
 
-    test('addUndoItem 方法被调用后，todoList的包含函数调用时传递的数据', () => {
+    test('addUndoItem 方法被调用后，todoList包含函数调用时传递的数据', () => {
       const todo = 'TDD实战';
       wrapper.instance().addUndoItem(todo);
       expect(wrapper.state('todoList').length).toEqual(1);
       expect(wrapper.state('todoList')).toContain(todo);
     });
 
-    test('deleteItem 方法被调用后，todoList的删除对应index的数据', () => {
+    test('deleteItem 方法被调用后，todoList删除对应index的数据', () => {
       const wrapper = shallow(<Todo />);
       const todoList = ['hello', 'world'];
       wrapper.setState({ todoList: todoList });
