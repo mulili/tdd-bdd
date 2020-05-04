@@ -51,11 +51,16 @@ describe('Todo component test', () => {
 
     test('deleteItem 方法被调用后，todoList删除对应index的数据', () => {
       const wrapper = shallow(<Todo />);
-      const todoList = ['hello', 'world'];
+      const todoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'world' },
+      ];
       wrapper.setState({ todoList: todoList });
       const index = 0;
       wrapper.instance().deleteItem(index);
-      expect(wrapper.state('todoList')).toEqual(['world']);
+      expect(wrapper.state('todoList')).toEqual([
+        { isFocus: false, value: 'world' },
+      ]);
     });
   });
 });

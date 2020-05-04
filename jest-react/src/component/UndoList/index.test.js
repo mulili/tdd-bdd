@@ -15,7 +15,11 @@ describe('UndoList component test', () => {
     });
 
     test('counter text should be 3, undo list length should be 3', () => {
-      const mockUndoList = ['hello', 'hello', 'hello'];
+      const mockUndoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+      ];
       const wrapper = shallow(<UndoList undoList={mockUndoList} />);
       const counter = findNodeByDataTest(wrapper, 'counter');
       expect(counter.text()).toEqual('3');
@@ -26,14 +30,22 @@ describe('UndoList component test', () => {
 
   describe('delete function test', () => {
     test('should have corresponding delete button when list exist', () => {
-      const mockUndoList = ['hello', 'hello', 'hello'];
+      const mockUndoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+      ];
       const wrapper = shallow(<UndoList undoList={mockUndoList} />);
       const deleteItems = findNodeByDataTest(wrapper, 'deleteItem');
       expect(deleteItems.length).toEqual(3);
     });
 
     test('delete function should be called after click delete btn', () => {
-      const mockUndoList = ['hello', 'hello', 'hello'];
+      const mockUndoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+      ];
       const mockDeleteItemFn = jest.fn();
       const wrapper = shallow(
         <UndoList undoList={mockUndoList} deleteItem={mockDeleteItemFn} />
@@ -48,7 +60,11 @@ describe('UndoList component test', () => {
 
   describe('click listItem test', () => {
     test('changeFocus fn should be called after click listItem', () => {
-      const mockUndoList = ['hello', 'hello', 'hello'];
+      const mockUndoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+      ];
       const mockChangeFocus = jest.fn();
       const wrapper = shallow(
         <UndoList undoList={mockUndoList} changeFocus={mockChangeFocus} />
@@ -56,8 +72,8 @@ describe('UndoList component test', () => {
       const listItems = findNodeByDataTest(wrapper, 'undoList');
       const index = 1;
       listItems.at(index).simulate('click');
-       expect(mockChangeFocus).toHaveBeenCalledWith(index);
-       expect(mockChangeFocus).toHaveBeenCalledTimes(1);
+      expect(mockChangeFocus).toHaveBeenCalledWith(index);
+      expect(mockChangeFocus).toHaveBeenCalledTimes(1);
     });
   });
 });

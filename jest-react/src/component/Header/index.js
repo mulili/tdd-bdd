@@ -18,7 +18,7 @@ class Header extends Component {
     const { value } = this.state;
     const { addUndoItem } = this.props;
     if (e.keyCode === 13 && value) {
-      addUndoItem(value);
+      addUndoItem({ isFocus: false, value });
       this.setState({
         value: '',
       });

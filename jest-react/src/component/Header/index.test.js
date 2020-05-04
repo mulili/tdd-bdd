@@ -66,7 +66,7 @@ describe('Header component test', () => {
         keyCode: 13,
       });
       expect(fn).toHaveBeenCalledTimes(1);
-      expect(fn).toHaveBeenCalledWith(userInput);
+      expect(fn).toHaveBeenCalledWith({ isFocus: false, value: userInput });
       expect(wrapper.state('value')).toEqual('');
 
       // dom 变化之后，需要重新获取dom，才能获得相应的变动
