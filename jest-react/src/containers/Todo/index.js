@@ -23,7 +23,7 @@ class Todo extends Component {
     });
   };
 
-  changeFocus = index => {
+  handleFocus = index => {
     const { todoList } = this.state;
     this.setState({
       todoList: todoList.map((item, k) => {
@@ -32,7 +32,7 @@ class Todo extends Component {
       }),
     });
   };
-  
+
   render() {
     const { todoList } = this.state;
     return (
@@ -41,7 +41,7 @@ class Todo extends Component {
         <UndoList
           undoList={todoList}
           deleteItem={this.deleteItem}
-          changeFocus={this.changeFocus}
+          handleFocus={this.handleFocus}
         />
       </div>
     );

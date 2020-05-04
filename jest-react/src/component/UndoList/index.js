@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 class UndoList extends Component {
   render() {
-    const { undoList, deleteItem, changeFocus } = this.props;
+    const { undoList, deleteItem, handleFocus } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-container">
@@ -19,7 +19,7 @@ class UndoList extends Component {
                 className="undo-list-item"
                 data-test="undoList"
                 onClick={() => {
-                  changeFocus(index);
+                  handleFocus(index);
                 }}
               >
                 {item.isFocus ? (

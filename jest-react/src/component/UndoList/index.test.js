@@ -69,21 +69,21 @@ describe('UndoList component test', () => {
   });
 
   describe('click listItem test', () => {
-    test('changeFocus fn should be called after click listItem', () => {
+    test('handleFocus fn should be called after click listItem', () => {
       const mockUndoList = [
         { isFocus: false, value: 'hello' },
         { isFocus: false, value: 'hello' },
         { isFocus: false, value: 'hello' },
       ];
-      const mockChangeFocus = jest.fn();
+      const mockHandleFocus = jest.fn();
       const wrapper = shallow(
-        <UndoList undoList={mockUndoList} changeFocus={mockChangeFocus} />
+        <UndoList undoList={mockUndoList} handleFocus={mockHandleFocus} />
       );
       const listItems = findNodeByDataTest(wrapper, 'undoList');
       const index = 1;
       listItems.at(index).simulate('click');
-      expect(mockChangeFocus).toHaveBeenCalledWith(index);
-      expect(mockChangeFocus).toHaveBeenCalledTimes(1);
+      expect(mockHandleFocus).toHaveBeenCalledWith(index);
+      expect(mockHandleFocus).toHaveBeenCalledTimes(1);
     });
   });
 });
