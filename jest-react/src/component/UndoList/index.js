@@ -22,7 +22,11 @@ class UndoList extends Component {
                   changeFocus(index);
                 }}
               >
-                {item.value}
+                {item.isFocus ? (
+                  <input data-test="inputItem" value={item.value}></input>
+                ) : (
+                  item.value
+                )}
                 <div
                   className="delete-item"
                   data-test="deleteItem"

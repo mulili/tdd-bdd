@@ -5,7 +5,7 @@ import UndoList from './index';
 import { findNodeByDataTest } from '../../utils/findNodeByDataTest';
 
 describe('UndoList component test', () => {
-  describe('display data test', () => {
+  describe('dom test', () => {
     test('counter text should be 0, and undoList length should be 0', () => {
       const wrapper = shallow(<UndoList undoList={[]} />);
       const counter = findNodeByDataTest(wrapper, 'counter');
@@ -25,6 +25,16 @@ describe('UndoList component test', () => {
       expect(counter.text()).toEqual('3');
       const undoList = findNodeByDataTest(wrapper, 'undoList');
       expect(undoList.length).toEqual(3);
+    });
+    test("should have one inputItem when item's isFocus is true", () => {
+      const mockUndoList = [
+        { isFocus: false, value: 'hello' },
+        { isFocus: true, value: 'hello' },
+        { isFocus: false, value: 'hello' },
+      ];
+      const wrapper = shallow(<UndoList undoList={mockUndoList} />);
+      const inputItems = findNodeByDataTest(wrapper, 'inputItem');
+      expect(inputItems.length).toEqual(1);
     });
   });
 
