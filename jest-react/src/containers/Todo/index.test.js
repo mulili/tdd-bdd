@@ -62,5 +62,21 @@ describe('Todo component test', () => {
         { isFocus: false, value: 'world' },
       ]);
     });
+
+    test('changFocus 方法被调用后，对应项的isFocus属性应该取反', () => {
+      const wrapper = shallow(<Todo />);
+      wrapper.setState({
+        todoList: [
+          { isFocus: true, value: 'hello' },
+          { isFocus: false, value: 'world' },
+          { isFocus: true, value: 'wow' },
+        ],
+      });
+      const index = 1;
+      wrapper.instance().changeFocus(index);
+      expect(wrapper.state('todoList')[index].isFocus).toBeTruthy();
+      expect(wrapper.state('todoList')[0].isFocus).toBeFalsy();
+      expect(wrapper.state('todoList')[2].isFocus).toBeFalsy();
+    });
   });
 });

@@ -23,7 +23,16 @@ class Todo extends Component {
     });
   };
 
-  changeFocus = index => {};
+  changeFocus = index => {
+    const { todoList } = this.state;
+    this.setState({
+      todoList: todoList.map((item, k) => {
+        item.isFocus = k === index ? true : false;
+        return item;
+      }),
+    });
+  };
+  
   render() {
     const { todoList } = this.state;
     return (
