@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import Header from './index';
+import { findNodeByDataTest } from '../../utils/findNodeByDataTest';
 
 describe('Header component test', () => {
   let wrapper = null;
@@ -10,7 +11,7 @@ describe('Header component test', () => {
 
   beforeEach(() => {
     wrapper = shallow(<Header />);
-    inputItem = wrapper.find("[data-test='inputItem']");
+    inputItem = findNodeByDataTest(wrapper, 'inputItem');
   });
 
   describe('dom test', () => {
@@ -36,7 +37,7 @@ describe('Header component test', () => {
       expect(wrapper.state('value')).toEqual(userInput);
 
       // dom 变化之后，需要重新获取dom，才能获得相应的变动
-      // inputItem = wrapper.find("[data-test='inputItem']");
+      // inputItem = findNodeByDataTest(wrapper,'inputItem');
       // expect(inputItem.prop('value')).toEqual(userInput);
     });
   });
@@ -46,7 +47,7 @@ describe('Header component test', () => {
     beforeEach(() => {
       fn = jest.fn();
       wrapper = shallow(<Header addUndoItem={fn} />);
-      inputItem = wrapper.find("[data-test='inputItem']");
+      inputItem = findNodeByDataTest(wrapper, 'inputItem');
     });
 
     test('如果input没有内容，不应该被调用”', () => {
@@ -69,7 +70,7 @@ describe('Header component test', () => {
       expect(wrapper.state('value')).toEqual('');
 
       // dom 变化之后，需要重新获取dom，才能获得相应的变动
-      // const newInputItem = wrapper.find("[data-test='inputItem']");
+      // const newInputItem = findNodeByDataTest(wrapper,'inputItem');
       // expect(newInputItem.prop('value')).toEqual('');
     });
   });
