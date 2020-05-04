@@ -33,6 +33,16 @@ class Todo extends Component {
     });
   };
 
+  handleBlur = () => {
+    const { todoList } = this.state;
+    this.setState({
+      todoList: todoList.map(item => {
+        item.isFocus = false;
+        return item;
+      }),
+    });
+  };
+
   render() {
     const { todoList } = this.state;
     return (
@@ -42,6 +52,7 @@ class Todo extends Component {
           undoList={todoList}
           deleteItem={this.deleteItem}
           handleFocus={this.handleFocus}
+          handleBlur={this.handleBlur}
         />
       </div>
     );

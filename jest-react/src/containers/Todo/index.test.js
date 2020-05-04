@@ -26,13 +26,22 @@ describe('Todo component test', () => {
       );
     });
 
-    test('<UndoList/> undoList 属性， deleteItem 方法，handleFocus 方法，且这两个方法都是<TodoList/>的对应实例 ', () => {
+    test('<UndoList/> undoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法，且这三个方法都是<TodoList/>的对应实例 ', () => {
       expect(undoList.prop('undoList')).toEqual(wrapper.state('todoList'));
+
+      expect(undoList.prop('deleteItem')).toBeTruthy();
       expect(undoList.prop('deleteItem')).toEqual(
         wrapper.instance().deleteItem
       );
+
+      expect(undoList.prop('handleFocus')).toBeTruthy();
       expect(undoList.prop('handleFocus')).toEqual(
         wrapper.instance().handleFocus
+      );
+
+      expect(undoList.prop('handleBlur')).toBeTruthy();
+      expect(undoList.prop('handleBlur')).toEqual(
+        wrapper.instance().handleBlur
       );
     });
   });
