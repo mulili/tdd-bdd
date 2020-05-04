@@ -1,10 +1,8 @@
 import React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 
 import Header from './index';
 
-Enzyme.configure({ adapter: new Adapter() });
 describe('Header component test', () => {
   let wrapper = null;
   let inputItem = null;
@@ -68,7 +66,6 @@ describe('Header component test', () => {
       });
       expect(fn).toHaveBeenCalledTimes(1);
       expect(fn).toHaveBeenCalledWith(userInput);
-      console.log(inputItem.debug());
       expect(wrapper.state('value')).toEqual('');
 
       // dom 变化之后，需要重新获取dom，才能获得相应的变动
