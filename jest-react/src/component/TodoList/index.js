@@ -16,7 +16,14 @@ class TodoList extends Component {
   };
 
   render() {
-    const { title, todoList, deleteItem, handleFocus, handleBlur } = this.props;
+    const {
+      title,
+      todoList,
+      deleteItem,
+      handleFocus,
+      handleBlur,
+      handleChecked,
+    } = this.props;
     return (
       <div className="list">
         <div className="list-container">
@@ -39,7 +46,14 @@ class TodoList extends Component {
                   handleBlur();
                 }}
               >
-                <input type="checkbox" className="list-checkbox-item" data-test="checkboxItem" />
+                <input
+                  type="checkbox"
+                  className="list-checkbox-item"
+                  data-test="checkboxItem"
+                  onClick={() => {
+                    handleChecked(index);
+                  }}
+                />
                 {item.isFocus ? (
                   <input
                     autoFocus
