@@ -4,15 +4,18 @@ import { shallow } from 'enzyme';
 import Todo from './index';
 import Header from '../../component/Header';
 import Undo from '../Undo';
+import Done from '../Done';
 
 describe('Todo component test', () => {
   let wrapper = null;
   let header = null;
   let undo = null;
+  let done = null;
   beforeEach(() => {
     wrapper = shallow(<Todo />);
     header = wrapper.find(Header);
     undo = wrapper.find(Undo);
+    done = wrapper.find(Done);
   });
 
   describe('dom test', () => {
@@ -31,7 +34,7 @@ describe('Todo component test', () => {
     });
 
     test('<Undo/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
-      expect(undo.prop('todoList')).toEqual(wrapper.state('todoList'));
+      expect(undo.prop('todoList')).toBeTruthy();
 
       expect(undo.prop('deleteItem')).toBeTruthy();
       expect(undo.prop('deleteItem')).toEqual(wrapper.instance().deleteItem);
@@ -44,6 +47,24 @@ describe('Todo component test', () => {
 
       expect(undo.prop('handleModifiedItem')).toBeTruthy();
       expect(undo.prop('handleModifiedItem')).toEqual(
+        wrapper.instance().handleModifiedItem
+      );
+    });
+    
+    test('<Done/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
+      expect(done.prop('todoList')).toBeTruthy();
+
+      expect(done.prop('deleteItem')).toBeTruthy();
+      expect(done.prop('deleteItem')).toEqual(wrapper.instance().deleteItem);
+
+      expect(done.prop('handleFocus')).toBeTruthy();
+      expect(done.prop('handleFocus')).toEqual(wrapper.instance().handleFocus);
+
+      expect(done.prop('handleBlur')).toBeTruthy();
+      expect(done.prop('handleBlur')).toEqual(wrapper.instance().handleBlur);
+
+      expect(done.prop('handleModifiedItem')).toBeTruthy();
+      expect(done.prop('handleModifiedItem')).toEqual(
         wrapper.instance().handleModifiedItem
       );
     });

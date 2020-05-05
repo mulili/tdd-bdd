@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import Header from '../../component/Header';
 import Undo from '../Undo';
+import Done from '../Done';
+
 class Todo extends Component {
   constructor(props) {
     super(props);
@@ -57,16 +59,17 @@ class Todo extends Component {
 
   render() {
     const { todoList } = this.state;
+    const props = {
+      deleteItem: this.deleteItem,
+      handleFocus: this.handleFocus,
+      handleBlur: this.handleBlur,
+      handleModifiedItem: this.handleModifiedItem,
+    };
     return (
       <div>
         <Header addUndoItem={this.addUndoItem} />
-        <Undo
-          todoList={todoList.filter(item=>!item.isDone)}
-          deleteItem={this.deleteItem}
-          handleFocus={this.handleFocus}
-          handleBlur={this.handleBlur}
-          handleModifiedItem={this.handleModifiedItem}
-        />
+        <Undo todoList={todoList.filter(item => !item.isDone)} {...props} />
+        <Done todoList={todoList} {...props} />
       </div>
     );
   }
