@@ -56,7 +56,17 @@ class Todo extends Component {
       }),
     });
   };
-
+  handleChecked = index => {
+    const { todoList } = this.state;
+    this.setState({
+      todoList: todoList.map((item, k) => {
+        if (k === index) {
+          item.isDone = !item.isDone;
+        }
+        return item;
+      }),
+    });
+  };
   render() {
     const { todoList } = this.state;
     const props = {
@@ -64,6 +74,7 @@ class Todo extends Component {
       handleFocus: this.handleFocus,
       handleBlur: this.handleBlur,
       handleModifiedItem: this.handleModifiedItem,
+      handleChecked: this.handleChecked,
     };
     return (
       <div>

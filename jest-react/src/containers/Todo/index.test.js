@@ -33,7 +33,7 @@ describe('Todo component test', () => {
       );
     });
 
-    test('<Undo/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
+    test('<Undo/>组件 应该有todoList 属性， deleteItem、handleFocus、handleBlur、handleModifiedItem、handleChecked 方法， 且这五个方法都是<Todo/>的对应实例', () => {
       expect(undo.prop('todoList')).toBeTruthy();
 
       expect(undo.prop('deleteItem')).toBeTruthy();
@@ -49,9 +49,14 @@ describe('Todo component test', () => {
       expect(undo.prop('handleModifiedItem')).toEqual(
         wrapper.instance().handleModifiedItem
       );
+
+      expect(undo.prop('handleChecked')).toBeTruthy();
+      expect(undo.prop('handleChecked')).toEqual(
+        wrapper.instance().handleChecked
+      );
     });
 
-    test('<Done/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
+    test('<Done/>组件 应该有todoList 属性， deleteItem、handleFocus、handleBlur、handleModifiedItem、handleChecked 方法， 且这五个方法都是<Todo/>的对应实例', () => {
       expect(done.prop('todoList')).toBeTruthy();
 
       expect(done.prop('deleteItem')).toBeTruthy();
@@ -66,6 +71,11 @@ describe('Todo component test', () => {
       expect(done.prop('handleModifiedItem')).toBeTruthy();
       expect(done.prop('handleModifiedItem')).toEqual(
         wrapper.instance().handleModifiedItem
+      );
+
+      expect(undo.prop('handleChecked')).toBeTruthy();
+      expect(undo.prop('handleChecked')).toEqual(
+        wrapper.instance().handleChecked
       );
     });
   });
@@ -126,6 +136,22 @@ describe('Todo component test', () => {
 
         wrapper.instance().handleModifiedItem(0, newValue);
         expect(wrapper.state('todoList')[index].value).toEqual(newValue);
+      });
+
+      test('handleChecked 方法被调用后，对应index项的isFocus属性应该取反', () => {
+        const wrapper = shallow(<Todo />);
+        wrapper.setState({
+          todoList: [
+            { isFocus: true, value: 'hello', isDone: false },
+            { isFocus: false, value: 'world', isDone: false },
+            { isFocus: true, value: 'wow', isDone: false },
+          ],
+        });
+        const index = 1;
+        wrapper.instance().handleChecked(index);
+        expect(wrapper.state('todoList')[index].isDone).toBeTruthy();
+        expect(wrapper.state('todoList')[0].isDone).toBeFalsy();
+        expect(wrapper.state('todoList')[2].isDone).toBeFalsy();
       });
     });
 
