@@ -33,6 +33,7 @@ class UndoList extends Component {
               >
                 {item.isFocus ? (
                   <input
+                    autoFocus
                     data-test="inputItem"
                     value={item.value}
                     onChange={e => this.handleInputItemChange(e, index)}
