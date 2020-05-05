@@ -53,6 +53,7 @@
   height: 20px;
   line-height: 20px;
   border-radius: 10px;
+  cursor: pointer;
 }
 .list-div-item {
   width: 400px;
