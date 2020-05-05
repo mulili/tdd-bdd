@@ -17,12 +17,91 @@ exports[`TodoList component test dom test snapshot test 1`] = `
         className="list-counter"
         data-test="counter"
       >
-        0
+        3
       </span>
     </div>
     <ul
       className="list-content"
-    />
+    >
+      <li
+        className="list-item"
+        data-test="listItem"
+        key="0-[object Object]"
+        onBlur={[Function]}
+        onClick={[Function]}
+      >
+        <input
+          className="list-checkbox-item"
+          data-test="checkboxItem"
+          type="checkbox"
+        />
+        <div
+          className="list-div-item"
+          data-test="divItem"
+        >
+          hello
+        </div>
+        <div
+          className="delete-item"
+          data-test="deleteItem"
+          onClick={[Function]}
+        >
+          -
+        </div>
+      </li>
+      <li
+        className="list-item"
+        data-test="listItem"
+        key="1-[object Object]"
+        onBlur={[Function]}
+        onClick={[Function]}
+      >
+        <input
+          className="list-checkbox-item"
+          data-test="checkboxItem"
+          type="checkbox"
+        />
+        <div
+          className="list-div-item"
+          data-test="divItem"
+        >
+          hello
+        </div>
+        <div
+          className="delete-item"
+          data-test="deleteItem"
+          onClick={[Function]}
+        >
+          -
+        </div>
+      </li>
+      <li
+        className="list-item"
+        data-test="listItem"
+        key="2-[object Object]"
+        onBlur={[Function]}
+        onClick={[Function]}
+      >
+        <input
+          className="list-checkbox-item"
+          data-test="checkboxItem"
+          type="checkbox"
+        />
+        <div
+          className="list-div-item"
+          data-test="divItem"
+        >
+          hello
+        </div>
+        <div
+          className="delete-item"
+          data-test="deleteItem"
+          onClick={[Function]}
+        >
+          -
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
 `;

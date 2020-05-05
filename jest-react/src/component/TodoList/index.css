@@ -33,11 +33,17 @@
   margin-bottom: 10px;
   background-color: #fff;
   border-left: 3px solid #629a9c;
-  text-indent: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 3px;
+}
+.list-checkbox-item {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-top: 2px;
 }
 .delete-item {
   margin-right: 10px;
@@ -47,16 +53,18 @@
   height: 20px;
   line-height: 20px;
   border-radius: 10px;
-  text-indent: 0px;
 }
 .list-div-item {
   width: 400px;
+  margin-left: -10px;
+  cursor: pointer;
 }
 .list-input-item {
   width: 400px;
   height: 70%;
-  text-indent: 10px;
   font-size: 20px;
+  margin-left: -10px;
   outline: none;
   border: none;
+  cursor: pointer;
 }
