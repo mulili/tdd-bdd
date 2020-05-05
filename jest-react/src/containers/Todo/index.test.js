@@ -3,16 +3,16 @@ import { shallow } from 'enzyme';
 
 import Todo from './index';
 import Header from '../../component/Header';
-import TodoList from '../../component/TodoList';
+import Undo from '../Undo';
 
 describe('Todo component test', () => {
   let wrapper = null;
   let header = null;
-  let todoList = null;
+  let undo = null;
   beforeEach(() => {
     wrapper = shallow(<Todo />);
     header = wrapper.find(Header);
-    todoList = wrapper.find(TodoList);
+    undo = wrapper.find(Undo);
   });
 
   describe('dom test', () => {
@@ -20,36 +20,36 @@ describe('Todo component test', () => {
       expect(header.length).toEqual(1);
     });
 
-    test('should have <TodoList/> ', () => {
-      expect(todoList.length).toEqual(1);
+    test('should have <Undo/> ', () => {
+      expect(undo.length).toEqual(1);
     });
 
-    test('<Header/> 应该有一个addUndoItem 方法，且这个方法是<TodoList/>的实例 ', () => {
+    test('<Header/> 应该有一个addUndoItem 方法，且这个方法是<Todo/>的实例 ', () => {
       expect(header.prop('addUndoItem')).toEqual(
         wrapper.instance().addUndoItem
       );
     });
 
-    test('<TodoList/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<TodoList/>的对应实例', () => {
-      expect(todoList.prop('todoList')).toEqual(wrapper.state('todoList'));
+    test('<Undo/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
+      expect(undo.prop('todoList')).toEqual(wrapper.state('todoList'));
 
-      expect(todoList.prop('deleteItem')).toBeTruthy();
-      expect(todoList.prop('deleteItem')).toEqual(
+      expect(undo.prop('deleteItem')).toBeTruthy();
+      expect(undo.prop('deleteItem')).toEqual(
         wrapper.instance().deleteItem
       );
 
-      expect(todoList.prop('handleFocus')).toBeTruthy();
-      expect(todoList.prop('handleFocus')).toEqual(
+      expect(undo.prop('handleFocus')).toBeTruthy();
+      expect(undo.prop('handleFocus')).toEqual(
         wrapper.instance().handleFocus
       );
 
-      expect(todoList.prop('handleBlur')).toBeTruthy();
-      expect(todoList.prop('handleBlur')).toEqual(
+      expect(undo.prop('handleBlur')).toBeTruthy();
+      expect(undo.prop('handleBlur')).toEqual(
         wrapper.instance().handleBlur
       );
 
-      expect(todoList.prop('handleModifiedItem')).toBeTruthy();
-      expect(todoList.prop('handleModifiedItem')).toEqual(
+      expect(undo.prop('handleModifiedItem')).toBeTruthy();
+      expect(undo.prop('handleModifiedItem')).toEqual(
         wrapper.instance().handleModifiedItem
       );
     });
@@ -68,7 +68,7 @@ describe('Todo component test', () => {
       });
     });
 
-    describe('<TodoList/> component related method test', () => {
+    describe('<Todo/> component related method test', () => {
       test('deleteItem 方法被调用后，todoList删除对应index项的数据', () => {
         const wrapper = shallow(<Todo />);
         const todoList = [
