@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Header from '../../component/Header';
-import UndoList from '../../component/UndoList';
+import TodoList from '../../component/TodoList';
 class Todo extends Component {
   constructor(props) {
     super(props);
@@ -60,8 +60,8 @@ class Todo extends Component {
     return (
       <div>
         <Header addUndoItem={this.addUndoItem} />
-        <UndoList
-          undoList={todoList}
+        <TodoList
+          todoList={todoList}
           deleteItem={this.deleteItem}
           handleFocus={this.handleFocus}
           handleBlur={this.handleBlur}

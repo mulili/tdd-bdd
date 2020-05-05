@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
-class UndoList extends Component {
+class TodoList extends Component {
   handleInputItemChange = (e, index) => {
     const { value } = e.target;
     const { handleModifiedItem } = this.props;
@@ -16,18 +16,18 @@ class UndoList extends Component {
   };
 
   render() {
-    const { undoList, deleteItem, handleFocus, handleBlur } = this.props;
+    const { todoList, deleteItem, handleFocus, handleBlur } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-container">
           <div className="undo-list-title">
             正在进行
             <span className="undo-list-counter" data-test="counter">
-              {undoList.length}
+              {todoList.length}
             </span>
           </div>
           <ul className="undo-list-content">
-            {undoList.map((item, index) => (
+            {todoList.map((item, index) => (
               <li
                 key={`${index}-${item}`}
                 className="undo-list-item"
@@ -73,4 +73,4 @@ class UndoList extends Component {
     );
   }
 }
-export default UndoList;
+export default TodoList;

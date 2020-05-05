@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UndoList component test dom test snapshot test 1`] = `
+exports[`TodoList component test dom test snapshot test 1`] = `
 <div
   className="undo-list"
 >
