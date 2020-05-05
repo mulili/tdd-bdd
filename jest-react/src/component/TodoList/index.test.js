@@ -16,9 +16,9 @@ describe('TodoList component test', () => {
 
     test('counter text should be 3, undo list length should be 3', () => {
       const mockTodoList = [
-        { isFocus: false, value: 'hello' },
-        { isFocus: false, value: 'hello' },
-        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: false, value: 'hello', isDone: false },
       ];
       const wrapper = shallow(<TodoList todoList={mockTodoList} />);
       const counter = findNodeByDataTest(wrapper, 'counter');
@@ -29,9 +29,9 @@ describe('TodoList component test', () => {
 
     test("should have one inputItem when item's isFocus is true", () => {
       const mockTodoList = [
-        { isFocus: false, value: 'hello' },
-        { isFocus: true, value: 'hello' },
-        { isFocus: false, value: 'hello' },
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: true, value: 'hello', isDone: false },
+        { isFocus: false, value: 'hello', isDone: false },
       ];
       const wrapper = shallow(<TodoList todoList={mockTodoList} />);
       const inputItems = findNodeByDataTest(wrapper, 'inputItem');
@@ -39,8 +39,8 @@ describe('TodoList component test', () => {
     });
 
     test('should have specific title', () => {
-      const  title = 'special title';
-      const wrapper = shallow(<TodoList  todoList={[]} title={title}/>);
+      const title = 'special title';
+      const wrapper = shallow(<TodoList todoList={[]} title={title} />);
       const listTitles = findNodeByDataTest(wrapper, 'listTitle');
       expect(listTitles.at(0).text()).toEqual(title);
     });
@@ -55,9 +55,9 @@ describe('TodoList component test', () => {
     describe('delete function test', () => {
       test('should have corresponding delete button when list exist', () => {
         const mockTodoList = [
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
         ];
         const wrapper = shallow(<TodoList todoList={mockTodoList} />);
         const deleteItems = findNodeByDataTest(wrapper, 'deleteItem');
@@ -66,9 +66,9 @@ describe('TodoList component test', () => {
 
       test('delete function should be called after click delete btn', () => {
         const mockTodoList = [
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
         ];
         const mockDeleteItemFn = jest.fn();
         const wrapper = shallow(
@@ -85,9 +85,9 @@ describe('TodoList component test', () => {
     describe('click listItem test', () => {
       test('handleFocus fn should be called after click listItem', () => {
         const mockTodoList = [
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
         ];
         const mockHandleFocus = jest.fn();
         const wrapper = shallow(
@@ -104,9 +104,9 @@ describe('TodoList component test', () => {
     describe('listItem blur test', () => {
       test('handleBlur should be called after listItem blur', () => {
         const mockTodoList = [
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'hello' },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
         ];
         const mockHandleBlur = jest.fn();
         const wrapper = shallow(
@@ -121,8 +121,8 @@ describe('TodoList component test', () => {
     describe('inputItem change test', () => {
       test('modifyItem method should be called with value', () => {
         const mockTodoList = [
-          { isFocus: true, value: 'hello' },
-          { isFocus: false, value: 'hey' },
+          { isFocus: true, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hey', isDone: false },
         ];
         const mockHandleModifyItem = jest.fn();
         const wrapper = shallow(
@@ -146,7 +146,9 @@ describe('TodoList component test', () => {
     describe('inputItem press "enter" key test', () => {
       test('after inputItem press "Enter" key , handleBur function should be called', () => {
         const inputValue = 'hello, world';
-        const mockTodoList = [{ isFocus: true, value: inputValue }];
+        const mockTodoList = [
+          { isFocus: true, value: inputValue, isDone: false },
+        ];
         const mockHandleBlur = jest.fn();
         const wrapper = shallow(
           <TodoList todoList={mockTodoList} handleBlur={mockHandleBlur} />

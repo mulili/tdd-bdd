@@ -67,14 +67,14 @@ describe('Todo component test', () => {
       test('deleteItem 方法被调用后，todoList删除对应index项的数据', () => {
         const wrapper = shallow(<Todo />);
         const todoList = [
-          { isFocus: false, value: 'hello' },
-          { isFocus: false, value: 'world' },
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: false, value: 'world', isDone: false },
         ];
         wrapper.setState({ todoList: todoList });
         const index = 0;
         wrapper.instance().deleteItem(index);
         expect(wrapper.state('todoList')).toEqual([
-          { isFocus: false, value: 'world' },
+          { isFocus: false, value: 'world', isDone: false },
         ]);
       });
 
@@ -82,9 +82,9 @@ describe('Todo component test', () => {
         const wrapper = shallow(<Todo />);
         wrapper.setState({
           todoList: [
-            { isFocus: true, value: 'hello' },
-            { isFocus: false, value: 'world' },
-            { isFocus: true, value: 'wow' },
+            { isFocus: true, value: 'hello', isDone: false },
+            { isFocus: false, value: 'world', isDone: false },
+            { isFocus: true, value: 'wow', isDone: false },
           ],
         });
         const index = 1;
@@ -100,7 +100,7 @@ describe('Todo component test', () => {
         const newValue = 'hello,world';
         const index = 0;
         wrapper.setState({
-          todoList: [{ isFocus: true, value: oldValue }],
+          todoList: [{ isFocus: true, value: oldValue, isDone: false }],
         });
 
         wrapper.instance().handleModifiedItem(0, newValue);
