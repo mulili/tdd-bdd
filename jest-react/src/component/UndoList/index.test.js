@@ -26,6 +26,7 @@ describe('UndoList component test', () => {
       const undoItems = findNodeByDataTest(wrapper, 'undoItem');
       expect(undoItems.length).toEqual(3);
     });
+
     test("should have one inputItem when item's isFocus is true", () => {
       const mockUndoList = [
         { isFocus: false, value: 'hello' },
@@ -35,6 +36,10 @@ describe('UndoList component test', () => {
       const wrapper = shallow(<UndoList undoList={mockUndoList} />);
       const inputItems = findNodeByDataTest(wrapper, 'inputItem');
       expect(inputItems.length).toEqual(1);
+    });
+    test('snapshot test', () => {
+      const wrapper = shallow(<UndoList undoList={[]} />);
+      expect(wrapper).toMatchSnapshot();
     });
   });
 

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndoList component test dom test snapshot test 1`] = `
+<div
+  className="undo-list"
+>
+  <div
+    className="undo-list-container"
+  >
+    <div
+      className="undo-list-title"
+    >
+      正在进行
+      <span
+        className="undo-list-counter"
+        data-test="counter"
+      >
+        0
+      </span>
+    </div>
+    <ul
+      className="undo-list-content"
+    />
+  </div>
+</div>
+`;
