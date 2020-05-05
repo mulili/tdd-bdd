@@ -34,19 +34,13 @@ describe('Todo component test', () => {
       expect(undo.prop('todoList')).toEqual(wrapper.state('todoList'));
 
       expect(undo.prop('deleteItem')).toBeTruthy();
-      expect(undo.prop('deleteItem')).toEqual(
-        wrapper.instance().deleteItem
-      );
+      expect(undo.prop('deleteItem')).toEqual(wrapper.instance().deleteItem);
 
       expect(undo.prop('handleFocus')).toBeTruthy();
-      expect(undo.prop('handleFocus')).toEqual(
-        wrapper.instance().handleFocus
-      );
+      expect(undo.prop('handleFocus')).toEqual(wrapper.instance().handleFocus);
 
       expect(undo.prop('handleBlur')).toBeTruthy();
-      expect(undo.prop('handleBlur')).toEqual(
-        wrapper.instance().handleBlur
-      );
+      expect(undo.prop('handleBlur')).toEqual(wrapper.instance().handleBlur);
 
       expect(undo.prop('handleModifiedItem')).toBeTruthy();
       expect(undo.prop('handleModifiedItem')).toEqual(
@@ -59,6 +53,7 @@ describe('Todo component test', () => {
     test('初始 todoList 数组的长度为0 ', () => {
       expect(wrapper.state('todoList').length).toEqual(0);
     });
+
     describe('<Header/> component related method test', () => {
       test('addUndoItem 方法被调用后，todoList包含函数调用时传递的数据', () => {
         const todo = 'TDD实战';
@@ -110,6 +105,47 @@ describe('Todo component test', () => {
 
         wrapper.instance().handleModifiedItem(0, newValue);
         expect(wrapper.state('todoList')[index].value).toEqual(newValue);
+      });
+    });
+
+    describe('<Undo/> component related test', () => {
+      test('todoList prop should be correctly ', () => {
+        const wrapper = shallow(<Todo />);
+        const mockToDoList = [
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: true,
+          },
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+        ];
+        wrapper.setState({
+          todoList: mockToDoList,
+        });
+        const undo = wrapper.find(Undo);
+
+        const result = [
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+        ];
+        expect(undo.prop('todoList')).toEqual(result);
       });
     });
   });

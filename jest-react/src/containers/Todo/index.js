@@ -61,7 +61,7 @@ class Todo extends Component {
       <div>
         <Header addUndoItem={this.addUndoItem} />
         <Undo
-          todoList={todoList}
+          todoList={todoList.filter(item=>!item.isDone)}
           deleteItem={this.deleteItem}
           handleFocus={this.handleFocus}
           handleBlur={this.handleBlur}
