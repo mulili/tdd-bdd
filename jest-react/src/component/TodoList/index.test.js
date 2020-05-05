@@ -210,7 +210,7 @@ describe('TodoList component test', () => {
         );
         const checkboxItems = findNodeByDataTest(wrapper, 'checkboxItem');
         const index = 1;
-        checkboxItems.at(index).simulate('click');
+        checkboxItems.at(index).simulate('change');
         expect(mockHandleChecked).toHaveBeenCalledWith(index);
         expect(mockHandleChecked).toHaveBeenCalledTimes(1);
       });

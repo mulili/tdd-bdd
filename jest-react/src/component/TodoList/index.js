@@ -51,7 +51,7 @@ class TodoList extends Component {
                   checked={item.isDone}
                   className="list-checkbox-item"
                   data-test="checkboxItem"
-                  onClick={e => {
+                  onChange={e => {
                     e && e.stopPropagation();
                     handleChecked(index);
                   }}

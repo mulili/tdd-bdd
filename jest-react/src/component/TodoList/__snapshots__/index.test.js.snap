@@ -34,7 +34,7 @@ exports[`TodoList component test dom test snapshot test 1`] = `
           checked={false}
           className="list-checkbox-item"
           data-test="checkboxItem"
-          onClick={[Function]}
+          onChange={[Function]}
           type="checkbox"
         />
         <div
@@ -62,7 +62,7 @@ exports[`TodoList component test dom test snapshot test 1`] = `
           checked={false}
           className="list-checkbox-item"
           data-test="checkboxItem"
-          onClick={[Function]}
+          onChange={[Function]}
           type="checkbox"
         />
         <div
@@ -90,7 +90,7 @@ exports[`TodoList component test dom test snapshot test 1`] = `
           checked={false}
           className="list-checkbox-item"
           data-test="checkboxItem"
-          onClick={[Function]}
+          onChange={[Function]}
           type="checkbox"
         />
         <div
