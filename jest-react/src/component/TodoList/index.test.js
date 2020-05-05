@@ -38,6 +38,13 @@ describe('TodoList component test', () => {
       expect(inputItems.length).toEqual(1);
     });
 
+    test('should have specific title', () => {
+      const  title = 'special title';
+      const wrapper = shallow(<TodoList  todoList={[]} title={title}/>);
+      const listTitles = findNodeByDataTest(wrapper, 'listTitle');
+      expect(listTitles.at(0).text()).toEqual(title);
+    });
+
     test('snapshot test', () => {
       const wrapper = shallow(<TodoList todoList={[]} />);
       expect(wrapper).toMatchSnapshot();

@@ -10,7 +10,9 @@ exports[`TodoList component test dom test snapshot test 1`] = `
     <div
       className="undo-list-title"
     >
-      正在进行
+      <span
+        data-test="listTitle"
+      />
       <span
         className="undo-list-counter"
         data-test="counter"

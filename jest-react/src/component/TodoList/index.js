@@ -16,12 +16,12 @@ class TodoList extends Component {
   };
 
   render() {
-    const { todoList, deleteItem, handleFocus, handleBlur } = this.props;
+    const { title, todoList, deleteItem, handleFocus, handleBlur } = this.props;
     return (
       <div className="undo-list">
         <div className="undo-list-container">
           <div className="undo-list-title">
-            正在进行
+            <span data-test="listTitle">{title}</span>
             <span className="undo-list-counter" data-test="counter">
               {todoList.length}
             </span>
