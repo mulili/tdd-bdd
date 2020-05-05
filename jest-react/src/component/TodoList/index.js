@@ -48,9 +48,11 @@ class TodoList extends Component {
               >
                 <input
                   type="checkbox"
+                  checked={item.isDone}
                   className="list-checkbox-item"
                   data-test="checkboxItem"
-                  onClick={() => {
+                  onClick={e => {
+                    e && e.stopPropagation();
                     handleChecked(index);
                   }}
                 />

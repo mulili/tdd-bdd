@@ -76,6 +76,17 @@ describe('TodoList component test', () => {
       });
     });
 
+    test("checkboxItem's checked property should equal it's isDone value", () => {
+      const mockTodoList = [
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: true, value: 'hello', isDone: true },
+      ];
+      const wrapper = shallow(<TodoList todoList={mockTodoList} />);
+      const checkboxItems = findNodeByDataTest(wrapper, 'checkboxItem');
+      expect(checkboxItems.at(0).prop('checked')).toBeFalsy();
+      expect(checkboxItems.at(1).prop('checked')).toBeTruthy();
+    });
+
     test('snapshot test', () => {
       const mockTodoList = [
         { isFocus: false, value: 'hello', isDone: false },
