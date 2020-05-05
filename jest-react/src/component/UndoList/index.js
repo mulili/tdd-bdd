@@ -7,6 +7,14 @@ class UndoList extends Component {
     handleModifiedItem(index, value);
   };
 
+  handleClickWithEnter = e => {
+    const { keyCode } = e;
+    const { handleBlur } = this.props;
+    if (keyCode === 13) {
+      handleBlur();
+    }
+  };
+
   render() {
     const { undoList, deleteItem, handleFocus, handleBlur } = this.props;
     return (
@@ -38,9 +46,14 @@ class UndoList extends Component {
                     value={item.value}
                     className="undo-list-input-item"
                     onChange={e => this.handleInputItemChange(e, index)}
+                    onKeyUp={e => {
+                      this.handleClickWithEnter(e, index);
+                    }}
                   ></input>
                 ) : (
-                  <div className="undo-list-div-item">{item.value}</div>
+                  <div data-test="divItem" className="undo-list-div-item">
+                    {item.value}
+                  </div>
                 )}
                 <div
                   className="delete-item"
