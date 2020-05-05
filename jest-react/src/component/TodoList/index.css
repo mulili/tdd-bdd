@@ -27,8 +27,8 @@
   list-style-type: none;
 }
 .list-item {
-  line-height: 24px;
-  height: 24px;
+  line-height: 40px;
+  height: 40px;
   font-size: 24px;
   margin-bottom: 10px;
   background-color: #fff;
@@ -61,8 +61,7 @@
 }
 .list-input-item {
   width: 400px;
-  height: 70%;
-  font-size: 20px;
+  font-size: 24px;
   margin-left: -10px;
   outline: none;
   border: none;

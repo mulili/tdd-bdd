@@ -94,7 +94,7 @@ describe('TodoList component test', () => {
         { isFocus: false, value: 'hello', isDone: false },
       ];
       const wrapper = shallow(<TodoList todoList={mockTodoList} />);
-      // expect(wrapper).toMatchSnapshot();
+      expect(wrapper).toMatchSnapshot();
     });
   });
 
