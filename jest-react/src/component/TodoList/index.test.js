@@ -45,8 +45,33 @@ describe('TodoList component test', () => {
       expect(listTitles.at(0).text()).toEqual(title);
     });
 
+    describe('should have correctly quantity checkbox ', () => {
+      test('quantity should be 3', () => {
+        const mockTodoList = [
+          { isFocus: false, value: 'hello', isDone: false },
+          { isFocus: true, value: 'hello', isDone: false },
+          { isFocus: false, value: 'hello', isDone: false },
+        ];
+        const wrapper = shallow(<TodoList todoList={mockTodoList} />);
+        const checkboxItems = findNodeByDataTest(wrapper, 'checkboxItem');
+        expect(checkboxItems.length).toEqual(3);
+      });
+
+      test('quantity should be 0', () => {
+        const mockTodoList = [];
+        const wrapper = shallow(<TodoList todoList={mockTodoList} />);
+        const checkboxItems = findNodeByDataTest(wrapper, 'checkboxItem');
+        expect(checkboxItems.length).toEqual(0);
+      });
+    });
+
     test('snapshot test', () => {
-      const wrapper = shallow(<TodoList todoList={[]} />);
+      const mockTodoList = [
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: false, value: 'hello', isDone: false },
+        { isFocus: false, value: 'hello', isDone: false },
+      ];
+      const wrapper = shallow(<TodoList todoList={mockTodoList} />);
       expect(wrapper).toMatchSnapshot();
     });
   });

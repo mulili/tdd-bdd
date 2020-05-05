@@ -39,6 +39,7 @@ class TodoList extends Component {
                   handleBlur();
                 }}
               >
+                <input type="checkbox" className="list-checkbox-item" data-test="checkboxItem" />
                 {item.isFocus ? (
                   <input
                     autoFocus
