@@ -1,18 +1,18 @@
-.undo-list {
+.list {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.undo-list-container {
+.list-container {
   width: 500px;
 }
-.undo-list-title {
+.list-title {
   font-size: 20px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
 }
-.undo-list-counter {
+.list-counter {
   font-size: 14px;
   color: #666;
   background-color: #e6e6fa;
@@ -22,10 +22,10 @@
   padding: 0 5px;
   text-align: center;
 }
-.undo-list-content {
+.list-content {
   list-style-type: none;
 }
-.undo-list-item {
+.list-item {
   line-height: 24px;
   height: 24px;
   font-size: 24px;
@@ -48,10 +48,10 @@
   border-radius: 10px;
   text-indent: 0px;
 }
-.undo-list-div-item {
+.list-div-item {
   width: 400px;
 }
-.undo-list-input-item {
+.list-input-item {
   width: 400px;
   height: 70%;
   text-indent: 10px;

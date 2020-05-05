@@ -10,11 +10,11 @@ describe('TodoList component test', () => {
       const wrapper = shallow(<TodoList todoList={[]} />);
       const counter = findNodeByDataTest(wrapper, 'counter');
       expect(counter.text()).toEqual('0');
-      const undoItems = findNodeByDataTest(wrapper, 'undoItem');
-      expect(undoItems.length).toEqual(0);
+      const listItems = findNodeByDataTest(wrapper, 'listItem');
+      expect(listItems.length).toEqual(0);
     });
 
-    test('counter text should be 3, undo list length should be 3', () => {
+    test('counter text should be 3, list list length should be 3', () => {
       const mockTodoList = [
         { isFocus: false, value: 'hello', isDone: false },
         { isFocus: false, value: 'hello', isDone: false },
@@ -23,8 +23,8 @@ describe('TodoList component test', () => {
       const wrapper = shallow(<TodoList todoList={mockTodoList} />);
       const counter = findNodeByDataTest(wrapper, 'counter');
       expect(counter.text()).toEqual('3');
-      const undoItems = findNodeByDataTest(wrapper, 'undoItem');
-      expect(undoItems.length).toEqual(3);
+      const listItems = findNodeByDataTest(wrapper, 'listItem');
+      expect(listItems.length).toEqual(3);
     });
 
     test("should have one inputItem when item's isFocus is true", () => {
@@ -93,9 +93,9 @@ describe('TodoList component test', () => {
         const wrapper = shallow(
           <TodoList todoList={mockTodoList} handleFocus={mockHandleFocus} />
         );
-        const undoItems = findNodeByDataTest(wrapper, 'undoItem');
+        const listItems = findNodeByDataTest(wrapper, 'listItem');
         const index = 1;
-        undoItems.at(index).simulate('click');
+        listItems.at(index).simulate('click');
         expect(mockHandleFocus).toHaveBeenCalledWith(index);
         expect(mockHandleFocus).toHaveBeenCalledTimes(1);
       });
@@ -112,8 +112,8 @@ describe('TodoList component test', () => {
         const wrapper = shallow(
           <TodoList todoList={mockTodoList} handleBlur={mockHandleBlur} />
         );
-        const undoItems = findNodeByDataTest(wrapper, 'undoItem');
-        undoItems.at(0).simulate('blur');
+        const listItems = findNodeByDataTest(wrapper, 'listItem');
+        listItems.at(0).simulate('blur');
         expect(mockHandleBlur).toHaveBeenCalledTimes(1);
       });
     });

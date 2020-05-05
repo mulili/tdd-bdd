@@ -2,26 +2,26 @@
 
 exports[`TodoList component test dom test snapshot test 1`] = `
 <div
-  className="undo-list"
+  className="list"
 >
   <div
-    className="undo-list-container"
+    className="list-container"
   >
     <div
-      className="undo-list-title"
+      className="list-title"
     >
       <span
         data-test="listTitle"
       />
       <span
-        className="undo-list-counter"
+        className="list-counter"
         data-test="counter"
       >
         0
       </span>
     </div>
     <ul
-      className="undo-list-content"
+      className="list-content"
     />
   </div>
 </div>
