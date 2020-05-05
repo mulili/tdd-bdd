@@ -69,7 +69,7 @@ class Todo extends Component {
       <div>
         <Header addUndoItem={this.addUndoItem} />
         <Undo todoList={todoList.filter(item => !item.isDone)} {...props} />
-        <Done todoList={todoList} {...props} />
+        <Done todoList={todoList.filter(item => item.isDone)} {...props} />
       </div>
     );
   }

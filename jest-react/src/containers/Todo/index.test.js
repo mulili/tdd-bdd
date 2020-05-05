@@ -50,7 +50,7 @@ describe('Todo component test', () => {
         wrapper.instance().handleModifiedItem
       );
     });
-    
+
     test('<Done/>组件 应该有todoList 属性， deleteItem 方法，handleFocus 方法，handleBlur 方法， handleModifiedItem 方法， 且这四个方法都是<Todo/>的对应实例', () => {
       expect(done.prop('todoList')).toBeTruthy();
 
@@ -167,6 +167,42 @@ describe('Todo component test', () => {
           },
         ];
         expect(undo.prop('todoList')).toEqual(result);
+      });
+    });
+
+    describe('<Undo/> component related test', () => {
+      test('todoList prop should be correctly ', () => {
+        const wrapper = shallow(<Todo />);
+        const mockToDoList = [
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: true,
+          },
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: false,
+          },
+        ];
+        wrapper.setState({
+          todoList: mockToDoList,
+        });
+        const done = wrapper.find(Done);
+
+        const result = [
+          {
+            isFocus: false,
+            value: 'hey',
+            isDone: true,
+          },
+        ];
+        expect(done.prop('todoList')).toEqual(result);
       });
     });
   });
