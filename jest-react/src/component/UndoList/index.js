@@ -36,10 +36,11 @@ class UndoList extends Component {
                     autoFocus
                     data-test="inputItem"
                     value={item.value}
+                    className="undo-list-input-item"
                     onChange={e => this.handleInputItemChange(e, index)}
                   ></input>
                 ) : (
-                  item.value
+                  <div className="undo-list-div-item">{item.value}</div>
                 )}
                 <div
                   className="delete-item"

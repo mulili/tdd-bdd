@@ -48,3 +48,14 @@
   border-radius: 10px;
   text-indent: 0px;
 }
+.undo-list-div-item {
+  width: 400px;
+}
+.undo-list-input-item {
+  width: 400px;
+  height: 70%;
+  text-indent: 10px;
+  font-size: 20px;
+  outline: none;
+  border: none;
+}
