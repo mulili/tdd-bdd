@@ -43,7 +43,8 @@ class UndoList extends Component {
                 <div
                   className="delete-item"
                   data-test="deleteItem"
-                  onClick={() => {
+                  onClick={e => {
+                    e && e.stopPropagation();
                     deleteItem(index);
                   }}
                 >
